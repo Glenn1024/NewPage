@@ -21,7 +21,6 @@ export default {
             this.$emit('set_navIndex', e.target.id);
         },
         cancel_contextmenu(e) {
-            e.preventDefault();
             this.contextmenu_state = false;
             this.$emit('set_navIndex', -1);
         },
