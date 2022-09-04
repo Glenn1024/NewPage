@@ -8,9 +8,10 @@ export default {
         add_navigator(title, url, favicon) {
             const nav = new Navigator(title, url, favicon);
             if (this.nav_index!=-1){
-                this.navigators.pop();
+                this.navigators[this.nav_index] = nav
+            } else {
+                this.navigators.push(nav);
             }
-            this.navigators.push(nav);
             const navs = [];
             for (let navigatior of this.navigators){
                 navs.push(JSON.stringify(navigatior));
