@@ -6,14 +6,9 @@ import {Navigator} from './js/navigator';
 
 export default {
   data() {
-    let navs = JSON.parse(window.localStorage.getItem('navigators'))||[];
-    for(let index in navs) {
-      const nav = JSON.parse(navs[index]);
-      navs[index] = new Navigator(nav.title, nav.url, nav.favicon);
-    }
     return {
       is_active: false,
-      navigators: navs,
+      navigators: this.load_navs(),
       nav_index: -1,
     }
   },
@@ -23,6 +18,14 @@ export default {
     },
     set_navIndex(n) {
       this.nav_index = n;
+    },
+    load_navs() {
+      let navs = JSON.parse(window.localStorage.getItem('navigators'))||[];
+      for(let index in navs) {
+        const nav = JSON.parse(navs[index]);
+        navs[index] = new Navigator(nav.title, nav.url, nav.favicon);
+      }
+      return navs;
     }
   },
   components: {

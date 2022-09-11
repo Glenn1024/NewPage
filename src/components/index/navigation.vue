@@ -1,17 +1,20 @@
 <script>
+import { onMounted } from 'vue';
 import Contextmenu from './contextmenu.vue';
 
 export default {
     props: ['is_active', 'navigators', 'nav_index'],
     emits: ['toggel', 'set_navIndex'],
     data() {
-        document.body.onclick = this.cancel_contextmenu;
-        document.body.oncontextmenu = this.cancel_contextmenu;
         return {
             contextmenu_state: false,
             x: 0,
             y: 0,
         }
+    },
+    mounted(){
+        document.body.onclick = this.cancel_contextmenu;
+        document.body.oncontextmenu = this.cancel_contextmenu;
     },
     methods: {
         contextmenu(e) {
@@ -42,7 +45,7 @@ export default {
     },
     components: {
         Contextmenu,
-    }
+    },
 }
 </script>
 

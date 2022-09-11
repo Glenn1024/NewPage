@@ -4,6 +4,20 @@ import {Navigator} from '../../js/navigator';
 export default {
     props: ['is_active', 'navigators', 'nav_index'],
     emits: ['toggel', 'set_navIndex'],
+    data() {
+        return {
+            title: '',
+            url: '',
+            favicon: '',
+        }
+    },
+    mounted () {
+        if (this.nav_index != -1) {
+            this.title = this.navigators[this.nav_index].title;
+            this.url = this.navigators[this.nav_index].url;
+            this.favicon = this.navigators[this.nav_index].favicon;
+        }
+    },
     methods: {
         add_navigator(title, url, favicon) {
             const nav = new Navigator(title, url, favicon);
@@ -31,21 +45,6 @@ export default {
             this.$emit('set_navIndex', -1);
         }
     },
-    data() {
-        if (this.nav_index==-1){
-            return {
-                title: '',
-                url: '',
-                favicon: '',
-            }    
-        }else{
-            return {
-                title: this.navigators[this.nav_index].title,
-                url: this.navigators[this.nav_index].url,
-                favicon: this.navigators[this.nav_index].favicon,
-            }    
-        }
-    }
 }
 </script>
 
@@ -70,6 +69,7 @@ input {
 }
 
 button {
+    outline: none;
     border: none;
 }
 

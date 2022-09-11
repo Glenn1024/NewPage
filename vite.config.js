@@ -15,8 +15,8 @@ export default defineConfig({
       'bootstrap-icons': "bootstrap-icons/font/bootstrap-icons.css"
     }
   },
-  server: {
-    host: '192.168.0.100',
-    port: 80,
-  },
+  // server: {
+  //   host: '192.168.0.100',
+  //   port: 80,
+  // },
 })
